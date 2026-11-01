@@ -1,16 +1,28 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Ubuntu_Sans, Poppins, Ubuntu_Sans_Mono } from "next/font/google";
 import { getSiteContent } from "@/lib/data";
 import "./globals.css";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { BackToTop } from "@/components/layout/BackToTop";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const ubuntuSans = Ubuntu_Sans({
   subsets: ["latin"],
+  variable: "--font-ubuntu-sans",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const poppins = Poppins({
   subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-poppins",
+  display: "swap",
+});
+
+const ubuntuMono = Ubuntu_Sans_Mono({
+  subsets: ["latin"],
+  variable: "--font-ubuntu-mono",
+  display: "swap",
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -21,13 +33,22 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  const site = await getSiteContent();
+
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${ubuntuSans.variable} ${poppins.variable} ${ubuntuMono.variable}`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body id="top">
+        <Header logo={site.logo} bookingUrl={site.bookingUrl} />
+        {children}
+        <Footer text={site.copyright} />
+        <BackToTop />
+      </body>
     </html>
   );
 }

@@ -1,26 +1,52 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Colours: each one becomes bg-*, text-*, border-* utilities */
+@theme {
+  --color-bg: #141613;
+  --color-surface: #1c1f1b;
+  --color-surface-2: #232720;
+  --color-line: #2f342c;
+  --color-fg: #eef0e8;
+  --color-muted: #a7ac9f;
+  --color-lime: #cdeb45;
+  --color-lime-ink: #1a2104;
+  --color-stone: #dedcd2;
+  --color-stone-ink: #161814;
+  --color-stone-muted: #55584f;
+
+  --ease-calm: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --container-site: 1180px;
 }
 
+/* Fonts: point at the variables next/font sets in layout.tsx */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-poppins), "Segoe UI", system-ui, sans-serif;
+  --font-head: var(--font-ubuntu-sans), "Segoe UI", system-ui, sans-serif;
+  --font-mono: var(--font-ubuntu-mono), ui-monospace, Consolas, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-bg text-fg font-sans antialiased;
+    line-height: 1.65;
+  }
+  h1, h2, h3 {
+    @apply font-head;
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-lime);
+    outline-offset: 3px;
+    border-radius: 6px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }
