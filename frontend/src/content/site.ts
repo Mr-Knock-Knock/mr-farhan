@@ -5,6 +5,8 @@ export type SocialLink = {
 
 export type SiteContent = {
   name: string;
+logo: string;
+  copyright: string;
   headline: string;
   intro: string[];
   businessNote: string;
@@ -15,6 +17,8 @@ export type SiteContent = {
 
 export const site: SiteContent = {
   name: "Muhammad Farhan Ahmad",
+  logo: "Mr-Farhan",
+  copyright: "© 2026 Muhammad Farhan Ahmad · Projects delivered through Byte Mosaic LLP",
   headline: "TODO: one-line headline",
   intro: [
     "TODO: 2–3 sentences on what you do and who you help.",
