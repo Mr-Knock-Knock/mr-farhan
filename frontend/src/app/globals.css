@@ -16,6 +16,11 @@
 
   --ease-calm: cubic-bezier(0.22, 0.61, 0.36, 1);
   --container-site: 1180px;
+  --animate-marquee: marquee 38s linear infinite;
+
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
 }
 
 /* Fonts: point at the variables next/font sets in layout.tsx */
