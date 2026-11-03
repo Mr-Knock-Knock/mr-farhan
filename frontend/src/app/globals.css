@@ -35,6 +35,21 @@
     8%, 85% { opacity: 1; }
     100% { transform: translateX(calc(100% - 10px)); opacity: 0; }
   }
+
+    --animate-conn-x: conn-x 2.4s var(--ease-calm) infinite;
+  --animate-conn-y: conn-y 2.4s var(--ease-calm) infinite;
+
+  @keyframes conn-x {
+    0% { left: 0; opacity: 0; }
+    15%, 80% { opacity: 1; }
+    100% { left: calc(100% - 8px); opacity: 0; }
+  }
+
+  @keyframes conn-y {
+    0% { top: 0; opacity: 0; }
+    15%, 80% { opacity: 1; }
+    100% { top: calc(100% - 8px); opacity: 0; }
+  }
 }
 
 /* Fonts: point at the variables next/font sets in layout.tsx */
@@ -63,6 +78,9 @@
     outline: 2px solid var(--color-lime);
     outline-offset: 3px;
     border-radius: 6px;
+  }
+    body:has(dialog[open]) {
+    overflow: hidden;
   }
 }
 
