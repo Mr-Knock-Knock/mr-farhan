@@ -1,3 +1,4 @@
+import { site } from "@/content/site";
 export type TwoToneHeading = {
   lead: string;
   highlight: string;
@@ -115,7 +116,7 @@ export const landing: LandingContent = {
       highlight: "built, fixed or figured out.",
     },
     sub: "Whether you're starting from scratch, fixing something that stopped working, or not yet sure what you need, you get someone who maps the process, builds it properly and keeps it running.",
-    primaryCta: { label: "Book a call", href: "#book" },
+    primaryCta: { label: "Book a call", href: site.bookingUrl },
     secondaryCta: { label: "See examples", href: "#work" },
   },
 
@@ -176,7 +177,7 @@ export const landing: LandingContent = {
     legend: { forward: "Next step", backward: "Back a level" },
     cta: {
       text: "Not sure where you are? Let's work it out on a call.",
-      button: { label: "Book a call", href: "#book" },
+      button: { label: "Book a call", href: site.bookingUrl },
     },
   },
     services: {
@@ -284,7 +285,7 @@ export const landing: LandingContent = {
   cta: {
     heading: { lead: "Tell me what you're doing", highlight: "manually." },
     text: "I'll show you what can be automated. No pitch, no invoice, just a straight conversation about your setup.",
-    button: { label: "Book a 30-minute call", href: "#book" },
+    button: { label: "Book a 30-minute call", href: site.bookingUrl },
     email: "farhanahmad634@gmail.com",
   },
 };

@@ -1,33 +1,18 @@
-export type SocialLink = {
-  label: string;
-  href: string;
-};
-
 export type SiteContent = {
   name: string;
-logo: string;
-  copyright: string;
-  headline: string;
-  intro: string[];
-  businessNote: string;
-  email: string;
+  logo: string;
+  title: string;
+  description: string;
   bookingUrl: string;
-  socials: SocialLink[];
+  copyright: string;
 };
 
 export const site: SiteContent = {
   name: "Muhammad Farhan Ahmad",
   logo: "Mr-Farhan",
+  title: "Muhammad Farhan Ahmad · Automation & CRM specialist",
+  description:
+    "GoHighLevel, n8n, Make and Zapier systems for businesses and agencies: built, fixed or figured out.",
+  bookingUrl: "#book",
   copyright: "© 2026 Muhammad Farhan Ahmad · Projects delivered through Byte Mosaic LLP",
-  headline: "TODO: one-line headline",
-  intro: [
-    "TODO: 2–3 sentences on what you do and who you help.",
-  ],
-  businessNote: "Projects delivered through Byte Mosaic LLP.",
-  email: "TODO@example.com",
-  bookingUrl: "#",
-  socials: [
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/im-muhammad-farhan-ahmad" },
-    { label: "GitHub", href: "https://github.com/Mr-Knock-Knock" },
-  ],
 };
