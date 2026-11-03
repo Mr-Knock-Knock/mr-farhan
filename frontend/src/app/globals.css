@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+/* Colours: each one becomes bg-*, text-*, border-* utilities */
+@theme {
+  --color-bg: #141613;
+  --color-surface: #1c1f1b;
+  --color-surface-2: #232720;
+  --color-line: #2f342c;
+  --color-fg: #eef0e8;
+  --color-muted: #a7ac9f;
+  --color-lime: #cdeb45;
+  --color-lime-ink: #1a2104;
+  --color-stone: #dedcd2;
+  --color-stone-ink: #161814;
+  --color-stone-muted: #55584f;
+  --color-paper: #f2f1ea;
+
+  --ease-calm: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --container-site: 1180px;
+  --animate-marquee: marquee 38s linear infinite;
+
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
+  --animate-shuttle: shuttle 5.5s ease-in-out infinite alternate;
+
+  @keyframes shuttle {
+    to { transform: translateX(calc(100% - 9px)); }
+  }
+
+    --animate-run: run 7s var(--ease-calm) infinite;
+
+  @keyframes run {
+    0% { transform: translateX(0); opacity: 0; }
+    8%, 85% { opacity: 1; }
+    100% { transform: translateX(calc(100% - 10px)); opacity: 0; }
+  }
+
+    --animate-conn-x: conn-x 2.4s var(--ease-calm) infinite;
+  --animate-conn-y: conn-y 2.4s var(--ease-calm) infinite;
+
+  @keyframes conn-x {
+    0% { left: 0; opacity: 0; }
+    15%, 80% { opacity: 1; }
+    100% { left: calc(100% - 8px); opacity: 0; }
+  }
+
+  @keyframes conn-y {
+    0% { top: 0; opacity: 0; }
+    15%, 80% { opacity: 1; }
+    100% { top: calc(100% - 8px); opacity: 0; }
+  }
+}
+
+/* Fonts: point at the variables next/font sets in layout.tsx */
+@theme inline {
+  --font-sans: var(--font-poppins), "Segoe UI", system-ui, sans-serif;
+  --font-head: var(--font-ubuntu-sans), "Segoe UI", system-ui, sans-serif;
+  --font-mono: var(--font-ubuntu-mono), ui-monospace, Consolas, monospace;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-bg text-fg font-sans antialiased;
+    line-height: 1.65;
+  }
+  h1, h2, h3 {
+    @apply font-head;
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-lime);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+    body:has(dialog[open]) {
+    overflow: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
