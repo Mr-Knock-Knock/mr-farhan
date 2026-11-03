@@ -28,8 +28,8 @@ const ubuntuMono = Ubuntu_Sans_Mono({
 export async function generateMetadata(): Promise<Metadata> {
   const site = await getSiteContent();
   return {
-    title: site.name,
-    description: site.headline,
+    title: site.title,
+    description: site.description,
   };
 }
 
