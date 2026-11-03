@@ -1,4 +1,5 @@
 import type { ComponentProps } from "react";
+import { site } from "@/content/site";
 
 type Variant = "primary" | "ghost" | "dark";
 type Size = "md" | "sm";
@@ -47,24 +48,22 @@ export function Button({
   children,
   ...props
 }: ButtonProps) {
-  const sizeStyles =
+          const sizeStyles =
     size === "sm" ? "[--a:30px] text-sm" : "[--a:38px] text-[15px]";
   const padding = arrow
     ? size === "sm"
       ? "gap-2.5 py-1 pr-1 pl-4"
       : "gap-3 py-1.5 pr-1.5 pl-[22px]"
     : "px-[22px] py-[13px]";
+  const classes = `group inline-flex cursor-pointer items-center rounded-full font-medium no-underline transition-colors duration-300 ease-calm ${sizeStyles} ${padding} ${variantStyles[variant]} ${className}`;
 
-  return (
-    <a
-      className={`group inline-flex items-center rounded-full font-medium no-underline transition-colors duration-300 ease-calm ${sizeStyles} ${padding} ${variantStyles[variant]} ${className}`}
-      {...props}
-    >
+  const content = (
+    <>
       {children}
-        {arrow && (
+      {arrow && (
         <span
           aria-hidden="true"
-          className={`relative size-(--a) flex-none overflow-hidden rounded-full ${arrowStyles[variant]}`}
+          className={`pointer-events-none relative size-(--a) flex-none overflow-hidden rounded-full ${arrowStyles[variant]}`}
         >
           <span className="absolute inset-0 transition-transform duration-450 ease-calm group-hover:translate-x-full group-focus-visible:translate-x-full motion-reduce:transition-none">
             <ArrowIcon className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
@@ -72,6 +71,26 @@ export function Button({
           </span>
         </span>
       )}
+    </>
+  );
+
+  if (props.href === site.bookingUrl) {
+    return (
+      <button
+        type="button"
+        className={classes}
+        data-cal-link={site.booking.calLink}
+        data-cal-namespace={site.booking.namespace}
+        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'
+      >
+        {content}
+      </button>
+    );
+  }
+
+  return (
+    <a className={classes} {...props}>
+      {content}
     </a>
   );
 }

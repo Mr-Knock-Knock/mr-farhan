@@ -5,6 +5,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BackToTop } from "@/components/layout/BackToTop";
+import { CalInit } from "@/components/layout/CalInit";
 
 const ubuntuSans = Ubuntu_Sans({
   subsets: ["latin"],
@@ -48,6 +49,7 @@ export default async function RootLayout({
         {children}
         <Footer text={site.copyright} />
         <BackToTop />
+                <CalInit namespace={site.booking.namespace} />
       </body>
     </html>
   );
