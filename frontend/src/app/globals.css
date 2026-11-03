@@ -27,6 +27,14 @@
   @keyframes shuttle {
     to { transform: translateX(calc(100% - 9px)); }
   }
+
+    --animate-run: run 7s var(--ease-calm) infinite;
+
+  @keyframes run {
+    0% { transform: translateX(0); opacity: 0; }
+    8%, 85% { opacity: 1; }
+    100% { transform: translateX(calc(100% - 10px)); opacity: 0; }
+  }
 }
 
 /* Fonts: point at the variables next/font sets in layout.tsx */
