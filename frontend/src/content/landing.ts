@@ -87,10 +87,19 @@ export type CtaContent = {
   email: string;
 };
 
+export type WorkContent = {
+  eyebrow: string;
+  heading: TwoToneHeading;
+  intro: string;
+  showMore: string;
+  openLabel: string;
+};
+
 export type LandingContent = {
   hero: HeroContent;
   tools: string[];
   levels: LevelsContent;
+  work: WorkContent;
   services: ServicesContent;
   process: ProcessContent;
   about: AboutContent;
@@ -213,7 +222,13 @@ export const landing: LandingContent = {
       },
     ],
   },
-
+  work: {
+    eyebrow: "Selected work",
+    heading: { lead: "When the tool says no,", highlight: "I find another way." },
+    intro: "Client names are kept private. The diagrams show the shape of each fix, not the client's system.",
+    showMore: "Show more",
+    openLabel: "View the approach →",
+  },
   process: {
     eyebrow: "How I work",
     heading: { lead: "No chasing. No guessing.", highlight: "No surprises." },
